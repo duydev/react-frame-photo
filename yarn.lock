@@ -2157,10 +2157,10 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-cropperjs@^1.5.5:
-  version "1.5.5"
-  resolved "https://registry.yarnpkg.com/cropperjs/-/cropperjs-1.5.5.tgz#07d04c64244ab88c1bfc382a848ec346ef50b7b9"
-  integrity sha512-aJF6GuGk0K+nxYpmK9ZEc0p8foHcrM3DAAK/1F66qe0h/b08hBNbjpZRM0JbPNHw452LCxzS8NndG5VMv+/hLA==
+cropperjs@1.0.0-rc.3:
+  version "1.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/cropperjs/-/cropperjs-1.0.0-rc.3.tgz#50a7c7611befc442702f845ede77d7df4572e82b"
+  integrity sha512-3w3Rg95zHeVSAidvsoCzkYo9IycuTkU7pdP+lckQg2PY72HnFjj4JtS1L4sPumVzOU++e14BYp20ZbVczvVN1Q==
 
 cross-spawn@^5.0.1:
   version "5.1.0"
