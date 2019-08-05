@@ -46,7 +46,7 @@ class SinglePage extends React.Component {
             cancelable: false
           });
           const a = document.createElement('a');
-          a.href = data;
+          a.href = data.data;
           a.download = 'image.png';
           a.dispatchEvent(clickEvent);
         })

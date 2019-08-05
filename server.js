@@ -30,17 +30,25 @@ app
       if (!photoURL || !frameURL)
         return res.status(400).json({ message: 'params is invalid.' });
 
-      const photo = await Jimp.read(photoURL);
+      const buff = Buffer.from(
+        photoURL.slice(photoURL.indexOf('base64') + 7),
+        'base64'
+      );
+      const photo = await Jimp.read(buff);
       const frame = await Jimp.read(frameURL);
 
-      //   const w = frame.getWidth();
-      //   const h = frame.getHeight();
+      const w = frame.getWidth();
+      const h = frame.getHeight();
 
-      //   const newImage = new Jimp(w, h);
+      photo.scaleToFit(w, h);
 
-      //   const data = await photo.getBase64Async('image/png');
+      const newImage = new Jimp(w, h);
+      newImage.blit(photo, 0, 0);
+      newImage.blit(frame, 0, 0);
 
-      return res.status(200).json({ data: null });
+      const data = await newImage.getBase64Async('image/png');
+
+      return res.status(200).json({ data });
     });
 
     server.get('*', (req, res) => {
