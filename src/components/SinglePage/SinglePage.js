@@ -2,8 +2,6 @@ import React from 'react';
 import 'w3-css/w3.css';
 import './style.css';
 
-import { remote } from 'fetch-base64';
-
 import { InteractiveZone } from '../InteractiveZone/InteractiveZone';
 import { ControlPanel } from '../ControlPanel/ControlPanel';
 
