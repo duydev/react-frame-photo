@@ -21,7 +21,7 @@ app
     server
       .use(helmet())
       .use(compression())
-      .use(bodyParser.json({ limit: '1mb' }))
+      .use(bodyParser.json({ limit: '10mb' }))
       .use(morgan('dev'));
 
     server.post('/api/images/merge', async (req, res) => {

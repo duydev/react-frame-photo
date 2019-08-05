@@ -13,7 +13,7 @@ class SinglePage extends React.Component {
     this.state = {
       userPhoto:
         'https://video-thumbs-ext.mediacdn.vn/thumb_w/650/2019/5/6/minh-nghi-15571602825331833982918.png',
-      framePhoto: 'http://doanhoi.svydtb.edu.vn/uploads/news/2018_10/1.png',
+      framePhoto: 'https://tuoitrevietnam.vn/avatar/img/ava1.png',
       croppedPhoto: null
     };
   }
