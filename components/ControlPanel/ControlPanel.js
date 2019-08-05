@@ -40,14 +40,14 @@ class ControlPanel extends React.Component {
         <div className="w3-row w3-margin">
           <button
             type="button"
-            className="w3-btn w3-khaki w3-col m6"
+            className="w3-btn w3-khaki w3-col m6 s6"
             onClick={() => this.props.onClickRotate(true)}
           >
             Rotate Left
           </button>
           <button
             type="button"
-            className="w3-btn w3-khaki w3-col m6"
+            className="w3-btn w3-khaki w3-col m6 s6"
             onClick={() => this.props.onClickRotate(false)}
           >
             Rotate Right
@@ -56,16 +56,14 @@ class ControlPanel extends React.Component {
         <div className="w3-row w3-margin">
           <button
             type="button"
-            className="w3-btn w3-khaki"
-            style={{ width: '50%' }}
+            className="w3-btn w3-khaki w3-col m6 s6"
             onClick={() => this.props.onClickZoom(true)}
           >
             Zoom In
           </button>
           <button
             type="button"
-            className="w3-btn w3-khaki"
-            style={{ width: '50%' }}
+            className="w3-btn w3-khaki w3-col m6 s6"
             onClick={() => this.props.onClickZoom(false)}
           >
             Zoom Out
