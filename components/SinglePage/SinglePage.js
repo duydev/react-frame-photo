@@ -1,6 +1,7 @@
 import React from 'react';
 import 'w3-css/w3.css';
 import './style.css';
+import fetch from 'isomorphic-unfetch';
 
 import { InteractiveZone } from '../InteractiveZone/InteractiveZone';
 import { ControlPanel } from '../ControlPanel/ControlPanel';
@@ -23,17 +24,33 @@ class SinglePage extends React.Component {
 
   doDownload = () => {
     this.refs.interactiveZone.crop();
-
     setTimeout(() => {
-      var clickEvent = new MouseEvent('click', {
-        view: window,
-        bubbles: true,
-        cancelable: false
-      });
-      const a = document.createElement('a');
-      a.href = this.state.croppedPhoto;
-      a.download = 'image.png';
-      a.dispatchEvent(clickEvent);
+      fetch('/api/images/merge', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          photoURL: this.state.croppedPhoto,
+          frameURL: this.state.framePhoto
+        })
+      })
+        .then(response => {
+          if (!response.ok) throw Error(response.statusText);
+          return response.json();
+        })
+        .then(data => {
+          var clickEvent = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: false
+          });
+          const a = document.createElement('a');
+          a.href = data;
+          a.download = 'image.png';
+          a.dispatchEvent(clickEvent);
+        })
+        .catch(err => console.log(err.stack));
     }, 500);
   };
 
