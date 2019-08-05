@@ -24,7 +24,8 @@
     "dev": "nodemon server.js",
     "dev:old": "next",
     "build": "next build",
-    "start": "next start"
+    "start:olds": "next start",
+    "start": "node server.js"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
