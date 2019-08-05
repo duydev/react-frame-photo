@@ -1,0 +1,15 @@
+.frame-photo {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+}
+
+.frame-photo img {
+  height: 100%;
+  width: 100%;
+}
+
+.interactive-zone {
+  position: relative;
+}

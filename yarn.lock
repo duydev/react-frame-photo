@@ -2764,6 +2764,11 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+cropperjs@^1.5.5:
+  version "1.5.5"
+  resolved "https://registry.yarnpkg.com/cropperjs/-/cropperjs-1.5.5.tgz#07d04c64244ab88c1bfc382a848ec346ef50b7b9"
+  integrity sha512-aJF6GuGk0K+nxYpmK9ZEc0p8foHcrM3DAAK/1F66qe0h/b08hBNbjpZRM0JbPNHw452LCxzS8NndG5VMv+/hLA==
+
 cross-spawn@6.0.5, cross-spawn@^6.0.0, cross-spawn@^6.0.5:
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"
@@ -7846,7 +7851,7 @@ react-dev-utils@^9.0.1:
     strip-ansi "5.2.0"
     text-table "0.2.0"
 
-react-dom@16.8.6:
+react-dom@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.8.6.tgz#71d6303f631e8b0097f56165ef608f051ff6e10f"
   integrity sha512-1nL7PIq9LTL3fthPqwkvr2zY7phIPjYrT0jp4HjyEQrEROnw4dG41VVwi/wfoCneoleqrNX7iAD+pXebJZwrwA==
@@ -7926,7 +7931,7 @@ react-scripts@3.0.1:
   optionalDependencies:
     fsevents "2.0.6"
 
-react@16.8.6:
+react@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"
   integrity sha512-pC0uMkhLaHm11ZSJULfOBqV4tIZkx87ZLvbbQYunNixAAvjnC+snJCg0XQXn9VIsttVsbZP/H/ewzgsd5fxKXw==
@@ -9504,6 +9509,11 @@ vm-browserify@0.0.4:
   integrity sha1-XX6kW7755Kb/ZflUOOCofDV9WnM=
   dependencies:
     indexof "0.0.1"
+
+w3-css@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/w3-css/-/w3-css-4.1.0.tgz#7872f2738d96a5732bac7718869151e3a5373ce4"
+  integrity sha512-nBomstRa3ITEDFG3EsYvVijueT3O1iwmjf96656VOR2BG6cwfkKwtwy/Gat7golUaA9ULPZPpo/Vj+3mYkeVfw==
 
 w3c-hr-time@^1.0.1:
   version "1.0.1"
