@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import 'w3-css/w3.css';
 import './style.css';
 import fetch from 'isomorphic-unfetch';
 
 import { InteractiveZone } from '../InteractiveZone/InteractiveZone';
 import { ControlPanel } from '../ControlPanel/ControlPanel';
+import Loading from '../Loading/Loading';
 
 class SinglePage extends React.Component {
   constructor(props) {
@@ -14,16 +15,24 @@ class SinglePage extends React.Component {
       userPhoto:
         'https://video-thumbs-ext.mediacdn.vn/thumb_w/650/2019/5/6/minh-nghi-15571602825331833982918.png',
       framePhoto: 'https://tuoitrevietnam.vn/avatar/img/ava1.png',
-      croppedPhoto: null
+      croppedPhoto: null,
+      isLoading: false
     };
   }
+
+  toggleLoading = show => {
+    this.setState({ isLoading: Boolean(show) });
+  };
 
   croppedPhoto = data => {
     this.setState({ croppedPhoto: data });
   };
 
   doDownload = () => {
+    this.toggleLoading(true);
+
     this.refs.interactiveZone.crop();
+
     setTimeout(() => {
       fetch('/api/images/merge', {
         method: 'POST',
@@ -40,6 +49,8 @@ class SinglePage extends React.Component {
           return response.json();
         })
         .then(data => {
+          this.toggleLoading(false);
+
           var clickEvent = new MouseEvent('click', {
             view: window,
             bubbles: true,
@@ -72,25 +83,28 @@ class SinglePage extends React.Component {
 
   render() {
     return (
-      <div className="single-page w3-container w3-row">
-        <div className="page-left w3-col m6">
-          <InteractiveZone
-            ref="interactiveZone"
-            photoURL={this.state.userPhoto}
-            frameURL={this.state.framePhoto}
-            onCropped={this.croppedPhoto}
-          />
+      <Fragment>
+        {this.state.isLoading && <Loading />}
+        <div className="single-page w3-container w3-row">
+          <div className="page-left w3-col m6">
+            <InteractiveZone
+              ref="interactiveZone"
+              photoURL={this.state.userPhoto}
+              frameURL={this.state.framePhoto}
+              onCropped={this.croppedPhoto}
+            />
+          </div>
+          <div className="page-right w3-col m6">
+            <ControlPanel
+              onClickDownload={this.doDownload}
+              onClickUpload={this.doUpload}
+              onClickRotate={this.doRotate}
+              onClickZoom={this.doZoom}
+              onClickReset={this.doReset}
+            />
+          </div>
         </div>
-        <div className="page-right w3-col m6">
-          <ControlPanel
-            onClickDownload={this.doDownload}
-            onClickUpload={this.doUpload}
-            onClickRotate={this.doRotate}
-            onClickZoom={this.doZoom}
-            onClickReset={this.doReset}
-          />
-        </div>
-      </div>
+      </Fragment>
     );
   }
 }
