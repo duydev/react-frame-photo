@@ -50,7 +50,7 @@ class ImageCropper extends React.Component {
       <Cropper
         ref="cropper"
         src={this.props.imageURL}
-        style={{ height: '100%', width: this.props.size }}
+        style={{ height: '100%', width: '100%' }}
         aspectRatio={1}
         guides={false}
         alt={this.state.alt}
@@ -72,7 +72,6 @@ class ImageCropper extends React.Component {
 
 ImageCropper.propTypes = {
   imageURL: PropTypes.string.isRequired,
-  size: PropTypes.number.isRequired,
   onCropped: PropTypes.func.isRequired
 };
 

@@ -61,13 +61,9 @@ class InteractiveZone extends React.Component {
           ref="cropper"
           imageURL={this.props.photoURL}
           alt="This is a user photo."
-          size={this.state.height}
           onCropped={this.props.onCropped}
         />
-        <div
-          className="frame-photo"
-          style={{ height: this.state.height, width: this.state.height }}
-        >
+        <div className="frame-photo" style={{ height: '100%', width: '100%' }}>
           <img id="frame-photo" src={this.props.frameURL} alt="" />
         </div>
       </div>

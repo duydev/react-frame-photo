@@ -252,7 +252,7 @@ class ReactCropper extends Component {
           }}
           src={src}
           alt={alt === undefined ? 'picture' : alt}
-          style={{ opacity: 0 }}
+          style={{ opacity: 0, maxWidth: '100%', height: 'auto' }}
         />
       </div>
     );
