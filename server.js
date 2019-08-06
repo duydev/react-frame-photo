@@ -41,12 +41,9 @@ app
       const h = frame.getHeight();
 
       photo.scaleToFit(w, h);
+      photo.blit(frame, 0, 0);
 
-      const newImage = new Jimp(w, h);
-      newImage.blit(photo, 0, 0);
-      newImage.blit(frame, 0, 0);
-
-      const data = await newImage.getBase64Async('image/png');
+      const data = await photo.getBase64Async('image/png');
 
       return res.status(200).json({ data });
     });
