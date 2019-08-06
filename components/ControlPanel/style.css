@@ -1,0 +1,14 @@
+.control-panel {
+  margin-left: 16px;
+}
+
+.control-panel > div {
+  margin-bottom: 8px;
+}
+
+@media screen and (max-width: 600px) {
+  .control-panel {
+    margin-top: 16px;
+    margin-left: inherit;
+  }
+}

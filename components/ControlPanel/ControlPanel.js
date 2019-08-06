@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.css';
 
 import { PropTypes } from 'prop-types';
 
@@ -21,8 +22,8 @@ class ControlPanel extends React.Component {
 
   render() {
     return (
-      <div className="control-panel w3-row w3-container">
-        <div className="w3-row w3-margin">
+      <div className="control-panel w3-row">
+        <div className="w3-row">
           <input
             type="file"
             ref="uploadFile"
@@ -31,45 +32,53 @@ class ControlPanel extends React.Component {
           />
           <button
             type="button"
-            className="w3-btn w3-teal w3-block w3-padding-large"
+            className="w3-btn w3-teal w3-block w3-col"
             onClick={this.triggerUploadFile}
           >
             Upload photo
           </button>
         </div>
-        <div className="w3-row w3-margin">
-          <button
-            type="button"
-            className="w3-btn w3-khaki w3-col m6 s6"
-            onClick={() => this.props.onClickRotate(true)}
-          >
-            Rotate Left
-          </button>
-          <button
-            type="button"
-            className="w3-btn w3-khaki w3-col m6 s6"
-            onClick={() => this.props.onClickRotate(false)}
-          >
-            Rotate Right
-          </button>
+        <div className="w3-row">
+          <div className="w3-col m6 s6" style={{ paddingRight: 4 }}>
+            <button
+              type="button"
+              className="w3-btn w3-khaki w3-block"
+              onClick={() => this.props.onClickRotate(true)}
+            >
+              Rotate Left
+            </button>
+          </div>
+          <div className="w3-col m6 s6" style={{ paddingLeft: 4 }}>
+            <button
+              type="button"
+              className="w3-btn w3-khaki w3-block"
+              onClick={() => this.props.onClickRotate(false)}
+            >
+              Rotate Right
+            </button>
+          </div>
         </div>
-        <div className="w3-row w3-margin">
-          <button
-            type="button"
-            className="w3-btn w3-khaki w3-col m6 s6"
-            onClick={() => this.props.onClickZoom(true)}
-          >
-            Zoom In
-          </button>
-          <button
-            type="button"
-            className="w3-btn w3-khaki w3-col m6 s6"
-            onClick={() => this.props.onClickZoom(false)}
-          >
-            Zoom Out
-          </button>
+        <div className="w3-row">
+          <div className="w3-col m6 s6" style={{ paddingRight: 4 }}>
+            <button
+              type="button"
+              className="w3-btn w3-khaki w3-block"
+              onClick={() => this.props.onClickZoom(true)}
+            >
+              Zoom In
+            </button>
+          </div>
+          <div className="w3-col m6 s6" style={{ paddingLeft: 4 }}>
+            <button
+              type="button"
+              className="w3-btn w3-khaki w3-block"
+              onClick={() => this.props.onClickZoom(false)}
+            >
+              Zoom Out
+            </button>
+          </div>
         </div>
-        <div className="w3-row w3-margin">
+        <div className="w3-row">
           <button
             type="button"
             className="w3-btn w3-red w3-block w3-padding-large"
@@ -78,7 +87,7 @@ class ControlPanel extends React.Component {
             Reset
           </button>
         </div>
-        <div className="w3-row w3-margin">
+        <div className="w3-row">
           <button
             type="button"
             className="w3-btn w3-teal w3-block w3-padding-large"

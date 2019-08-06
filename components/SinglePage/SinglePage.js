@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import 'w3-css/w3.css';
 import './style.css';
 import fetch from 'isomorphic-unfetch';
@@ -83,10 +83,10 @@ class SinglePage extends React.Component {
 
   render() {
     return (
-      <Fragment>
+      <div className="w3-container">
         {this.state.isLoading && <Loading />}
         <div className="single-page w3-container w3-row">
-          <div className="page-left w3-col m6">
+          <div className="page-left w3-col m6 s12">
             <InteractiveZone
               ref="interactiveZone"
               photoURL={this.state.userPhoto}
@@ -94,7 +94,7 @@ class SinglePage extends React.Component {
               onCropped={this.croppedPhoto}
             />
           </div>
-          <div className="page-right w3-col m6">
+          <div className="page-right w3-col m6 s12">
             <ControlPanel
               onClickDownload={this.doDownload}
               onClickUpload={this.doUpload}
@@ -104,7 +104,7 @@ class SinglePage extends React.Component {
             />
           </div>
         </div>
-      </Fragment>
+      </div>
     );
   }
 }
