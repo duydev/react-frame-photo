@@ -1,23 +1,31 @@
 import React from 'react';
 import 'w3-css/w3.css';
 import './style.css';
-import fetch from 'isomorphic-unfetch';
+import socketIOClient from 'socket.io-client';
 
 import { InteractiveZone } from '../InteractiveZone/InteractiveZone';
 import { ControlPanel } from '../ControlPanel/ControlPanel';
 import Loading from '../Loading/Loading';
 
 class SinglePage extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    userPhoto: '',
+    framePhoto: '',
+    croppedPhoto: null,
+    isLoading: true
+  };
 
-    this.state = {
-      userPhoto:
-        'https://video-thumbs-ext.mediacdn.vn/thumb_w/650/2019/5/6/minh-nghi-15571602825331833982918.png',
-      framePhoto: 'https://tuoitrevietnam.vn/avatar/img/ava1.png',
-      croppedPhoto: null,
-      isLoading: false
-    };
+  socket = socketIOClient();
+
+  componentDidMount() {
+    this.toggleLoading(true);
+
+    this.socket.on('responseInitialData', (framePhotoURL, defaultImageURL) => {
+      this.setState({ framePhoto: framePhotoURL, userPhoto: defaultImageURL });
+      this.toggleLoading(false);
+    });
+
+    this.socket.emit('requestInitialData', 0);
   }
 
   toggleLoading = show => {
@@ -33,35 +41,23 @@ class SinglePage extends React.Component {
 
     this.refs.interactiveZone.crop();
 
-    setTimeout(() => {
-      fetch('/api/images/merge', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          photoURL: this.state.croppedPhoto,
-          frameURL: this.state.framePhoto
-        })
-      })
-        .then(response => {
-          if (!response.ok) throw Error(response.statusText);
-          return response.json();
-        })
-        .then(data => {
-          this.toggleLoading(false);
+    this.socket.on('responseCombineImage', imgData => {
+      const clickEvent = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: false
+      });
 
-          var clickEvent = new MouseEvent('click', {
-            view: window,
-            bubbles: true,
-            cancelable: false
-          });
-          const a = document.createElement('a');
-          a.href = data.data;
-          a.download = 'image.png';
-          a.dispatchEvent(clickEvent);
-        })
-        .catch(err => console.log(err.stack));
+      const a = document.createElement('a');
+      a.href = imgData;
+      a.download = 'image.png';
+      a.dispatchEvent(clickEvent);
+
+      this.toggleLoading(false);
+    });
+
+    setTimeout(() => {
+      this.socket.emit('requestCombineImage', 0, this.state.croppedPhoto);
     }, 500);
   };
 
